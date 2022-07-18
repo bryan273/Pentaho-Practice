@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>Transformation 3</name>
+    <name>Quiz 1</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/07/14 19:16:49.555</created_date>
+    <created_date>2022/07/19 00:10:42.660</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/07/14 19:16:49.555</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2022/07/19 00:10:42.660</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -493,8 +492,18 @@
   </connection>
   <order>
     <hop>
+      <from>Filter rows</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Microsoft Excel input</from>
       <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -503,28 +512,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Table input</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Formula</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Stream lookup</from>
       <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -555,6 +544,51 @@
       <grouping_symbol/>
       <currency_symbol/>
     </calculation>
+    <calculation>
+      <field_name>jan_new</field_name>
+      <calc_type>ROUND_1</calc_type>
+      <field_a>Jan</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>feb_new</field_name>
+      <calc_type>ROUND_1</calc_type>
+      <field_a>Feb</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>mar_new</field_name>
+      <calc_type>ROUND_1</calc_type>
+      <field_a>Mar</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -564,8 +598,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>48</yloc>
+      <xloc>482</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -585,13 +619,13 @@
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>Tahun</leftvalue>
+        <leftvalue>Kode Cabang</leftvalue>
         <function>=</function>
         <rightvalue/>
         <value>
           <name>constant</name>
-          <type>Number</type>
-          <text>2008.0</text>
+          <type>String</type>
+          <text>CABANG-065</text>
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
@@ -608,8 +642,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>48</yloc>
+      <xloc>370</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -625,9 +659,9 @@
       <schema_name/>
     </partitioning>
     <formula>
-      <field_name>total</field_name>
-      <formula_string>SUM([Jan];[Feb];[Mar];[Apr];[May];[Jun];[Jul];[Aug];[Sep];[Oct];[Nov];[Dec])</formula_string>
-      <value_type>Number</value_type>
+      <field_name>total_target_q1</field_name>
+      <formula_string>SUM([jan_new];[feb_new];[mar_new])</formula_string>
+      <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <replace_field/>
@@ -641,8 +675,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>48</yloc>
+      <xloc>578</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -673,7 +707,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\lenovo yoga\Downloads\training\Target Penjualan.xlsx</name>
+      <name>C:\Users\lenovo yoga\Downloads\Target Penjualan Sembako.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -907,82 +941,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <from>Table input</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>N</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>Y</integer_pair>
-    <lookup>
-      <key>
-        <name>Kode Cabang</name>
-        <field>kode_cabang</field>
-      </key>
-      <value>
-        <name>nama_cabang</name>
-        <rename>nama_cabang</rename>
-        <default/>
-        <type>None</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table input</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>localhost mysql</connection>
-    <sql>SELECT * FROM ms_cabang;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>144</yloc>
+      <xloc>242</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -999,14 +959,6 @@
     </partitioning>
     <fields>
       <field>
-        <name>Kode Cabang</name>
-        <rename>kode_cabang</rename>
-      </field>
-      <field>
-        <name>nama_cabang</name>
-        <rename/>
-      </field>
-      <field>
         <name>Kode Produk</name>
         <rename>kode_produk</rename>
       </field>
@@ -1015,8 +967,8 @@
         <rename>tahun</rename>
       </field>
       <field>
-        <name>total</name>
-        <rename>target_total</rename>
+        <name>total_target_q1</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1029,8 +981,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>224</yloc>
+      <xloc>576</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1047,7 +999,7 @@
     </partitioning>
     <connection>localhost mysql</connection>
     <schema/>
-    <table>data_tabular</table>
+    <table>data_tabular_quiz</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1073,8 +1025,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>304</yloc>
+      <xloc>576</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
